@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desk — Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <div>
+            <h1>Desk</h1>
+            <p id="date" class="muted"></p>
+        </div>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+    </header>
+
+    <main class="layout">
+        <section class="panel tasks" aria-labelledby="tasks-h">
+            <h2 id="tasks-h">Tasks</h2>
+            <form id="taskForm" class="task-form">
+                <input id="taskInput" type="text" placeholder="What needs doing?" maxlength="120" required
+                    aria-label="Task name">
+                <select id="taskPriority" aria-label="Priority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <input id="taskDate" type="date" aria-label="Due date">
+                <button class="btn" type="submit">Add task</button>
+            </form>
+            <div class="filters" role="group" aria-label="Filter tasks">
+                <button class="chip active" data-filter="all">All</button>
+                <button class="chip" data-filter="active">Active</button>
+                <button class="chip" data-filter="done">Done</button>
+                <button id="clearDone" class="chip push">Clear done</button>
+            </div>
+            <ul id="taskList" class="task-list"></ul>
+            <p id="taskCount" class="muted"></p>
+        </section>
+
+        <section class="panel pomodoro" aria-labelledby="pomo-h">
+            <h2 id="pomo-h">Focus timer</h2>
+            <div class="filters" role="group" aria-label="Timer mode">
+                <button class="chip active" data-mode="focus">Focus 25</button>
+                <button class="chip" data-mode="break">Break 5</button>
+            </div>
+            <div id="timer" class="timer" role="timer" aria-live="off">25:00</div>
+            <div class="progress">
+                <div id="bar"></div>
+            </div>
+            <div class="controls">
+                <button id="startBtn" class="btn">Start</button>
+                <button id="resetBtn" class="btn ghost">Reset</button>
+            </div>
+            <p id="sessions" class="muted"></p>
+        </section>
+
+        <section class="panel notes" aria-labelledby="notes-h">
+            <h2 id="notes-h">Quick notes</h2>
+            <textarea id="notes" placeholder="Jot something down. It saves automatically."
+                aria-label="Notes"></textarea>
+            <p id="saveStatus" class="muted"></p>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
